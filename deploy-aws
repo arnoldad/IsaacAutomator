@@ -146,6 +146,42 @@ class DeployAWSCommand(DeployCommand):
             ),
         )
 
+        # --adsk-vpc-id
+        self.params.insert(
+            # insert before --adsk-subnet-id option
+            self.param_index("adsk-subnet-id"),
+            click.core.Option(
+                ("--adsk-vpc-id",),
+                prompt=colorize_prompt("* AWS VPC ID"),
+                show_default=True,
+                help="AWS VPC ID.",
+            ),
+        )
+
+        # --adsk-subnet-id
+        self.params.insert(
+            # insert before --isaac-instance-type option
+            self.param_index("isaac-instance-type"),
+            click.core.Option(
+                ("--adsk-subnet-id",),
+                prompt=colorize_prompt("* AWS Subnet ID"),
+                show_default=True,
+                help="AWS Subnet ID.",
+            ),
+        )
+
+        # --adsk-vpc-cidr-block
+        self.params.insert(
+            # insert before --adsk-vpc-id option
+            self.param_index("adsk-vpc-id"),
+            click.core.Option(
+                ("--adsk-vpc-cidr-block",),
+                prompt=colorize_prompt("* AWS VPC CIDR Block"),
+                show_default=True,
+                help="AWS VPC CIDR Block.",
+            ),
+        )
+
         # --region
         self.params.insert(
             # insert before --isaac option

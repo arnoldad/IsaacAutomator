@@ -27,12 +27,6 @@ module "common" {
   region = var.region
 }
 
-module "vpc" {
-  source = "./vpc"
-  prefix = "${var.prefix}.${var.deployment_name}"
-  region = var.region
-}
-
 module "isaac" {
   source            = "./isaac"
   prefix            = "${var.prefix}.${var.deployment_name}.isaac"
@@ -48,8 +42,8 @@ module "isaac" {
   iam_instance_profile = null
 
   vpc = {
-    id         = module.vpc.vpc.id
-    cidr_block = module.vpc.vpc.cidr_block
+    id         = var.autodesk_vpc_id
+    cidr_block = ar.autodesk_vpc_cidr_block
   }
 }
 
@@ -62,7 +56,7 @@ module "ovami" {
   deployment_name = var.deployment_name
 
   vpc = {
-    id         = module.vpc.vpc.id
-    cidr_block = module.vpc.vpc.cidr_block
+    id         = var.autodesk_vpc_id
+    cidr_block = var.autodesk_vpc_cidr_block
   }
 }

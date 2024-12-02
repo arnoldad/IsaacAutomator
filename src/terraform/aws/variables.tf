@@ -41,3 +41,16 @@ variable "isaac_enabled" {
 variable "isaac_instance_type" {
   type = string
 }
+
+variable "autodesk_vpc_id" {
+  type = string
+}
+
+variable "autodesk_subnet_id" {
+  type = string
+}
+
+variable "autodesk_vpc_cidr_block" {
+  description = "CIDR block for the entire VPC. Will be split into /24 subnets."
+  type        = string
+}
